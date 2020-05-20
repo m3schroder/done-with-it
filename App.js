@@ -1,10 +1,34 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {
+  TouchableWithoutFeedback,
+  TouchableNativeFeedback,
+  Image,
+  Alert,
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Button,
+} from "react-native";
 
 export default function App() {
+  let x = 1;
+  console.log("Executed");
+
+  const handlePress = () => console.log("Text pressed");
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Button
+        color="orange"
+        title="Click me"
+        onPress={() =>
+          Alert.alert("My Title", "My message", [
+            { text: "Yes", onPress: () => console.log("yes") },
+            { text: "No", onPress: () => console.log("no") },
+          ])
+        }
+      />
     </View>
   );
 }
@@ -12,8 +36,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
