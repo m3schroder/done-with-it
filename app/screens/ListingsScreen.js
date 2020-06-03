@@ -1,34 +1,47 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import Constants from "expo-constants";
+import { StyleSheet, FlatList } from "react-native";
 
 import Card from "../components/Card";
+import Screen from "../components/Screen";
 import colors from "../config/colors";
+
+const Listings = [
+  {
+    id: 1,
+    title: "Red Jacket for sale",
+    price: 100,
+    image: require("../assets/images/jacket.jpg"),
+  },
+  {
+    id: 2,
+    title: "Couch in great condition",
+    price: 100,
+    image: require("../assets/images/couch.jpg"),
+  },
+];
 
 function ListingsScreen(props) {
   return (
-    <View style={styles.container}>
-      <Card
-        title="Couch in great condition"
-        subTitle="$1000"
-        image={require("../assets/images/couch.jpg")}
+    <Screen style={styles.container}>
+      <FlatList
+        data={Listings}
+        keyExtractor={(listing) => listing.id.toString()}
+        renderItem={({ item }) => (
+          <Card
+            title={item.title}
+            subTitle={"$" + item.price}
+            image={item.image}
+          />
+        )}
       />
-      <Card
-        title="Red Jacket"
-        subTitle="$100"
-        image={require("../assets/images/jacket.jpg")}
-      />
-    </View>
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Constants.statusBarHeight + 10,
-    width: "100%",
-    height: "100%",
+    padding: 15,
     backgroundColor: colors.light,
-    alignItems: "center",
   },
 });
 export default ListingsScreen;

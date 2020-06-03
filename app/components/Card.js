@@ -18,7 +18,6 @@ function Card({ title, subTitle, image }) {
 
 const styles = StyleSheet.create({
   card: {
-    width: "90%",
     borderRadius: 15,
     backgroundColor: colors.white,
     marginBottom: 20,
