@@ -39,6 +39,7 @@ function MessagesScreen(props) {
         renderItem={({ item }) => (
           <ListItem
             title={item.title}
+            showChevron={true}
             subTitle={item.subTitle}
             image={item.image}
             onPress={() => console.log("Message Sleected", item)}
